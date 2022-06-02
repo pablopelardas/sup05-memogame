@@ -1,0 +1,28 @@
+.tarjeta {
+	width: 200px;
+	height: 200px;
+	background-color: salmon;
+	display: flex;
+}
+
+.tarjeta_info {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+.img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.nombre {
+	background-color: white;
+	color: black;
+	font-size: 1.5rem;
+	z-index: 2;
+	position: absolute;
+	top: 0;
+}
