@@ -1,8 +1,12 @@
 .nav {
-    background-color: black;
-    width: 100vw;
-    height: 50px;
-    display: flex;
+	background-color: black;
+	/* Esto agrega un scroll horizontal. por eso lo quito
+	width: 100vw;
+	*/
+	height: 5vh;
+	display: flex;
+	color: white;
+	text-align: center;
 }
 
-.button {}
+/* .button {} */

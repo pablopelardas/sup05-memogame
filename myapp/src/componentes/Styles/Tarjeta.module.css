@@ -1,0 +1,19 @@
+.tarjeta {
+	background: rgb(119, 42, 42);
+	border: 2.321px solid black;
+	width: 200px;
+	height: 234.5px;
+	border-radius: 5px;
+	box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+	cursor: default;
+	transition: all 400ms ease;
+}
+.tarjeta:hover {
+	box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+}
+.img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 5px;
+}
