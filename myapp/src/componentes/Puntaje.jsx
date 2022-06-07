@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Puntaje = () => {
-	return <div>Puntaje</div>;
+const Puntaje = ({puntaje}) => {
+	return <div>Puntaje: {puntaje}</div>;
 };
 
 export default Puntaje;
