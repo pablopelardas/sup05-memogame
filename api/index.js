@@ -1,0 +1,1 @@
+require('./src/index.js').listen(3001, () => console.log(`%s listening at 3001`))
