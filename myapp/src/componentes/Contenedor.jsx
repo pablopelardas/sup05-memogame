@@ -3,12 +3,14 @@ import TarjetasMock from '../store/tarjetasMock';
 import s from './Styles/Contenedor.module.css';
 import shuffle from 'lodash.shuffle';
 import FlipCard from './FlipCard.jsx';
+import { connect } from 'react-redux';
 
-export default function Contenedor({setPuntaje}) {
-	const [tarjetas, setTarjetas] = useState(TarjetasMock);
+export function Contenedor({tarjetas , setPuntaje}) {
+
+
 	const [comparando, setComparando] = useState([]);
 	const [baraja, setBaraja] = useState();
-
+  
 	let comparativa = async function () {
 		if (comparando.length !== 2) return null;
 		if (baraja[comparando[0]].id === baraja[comparando[1]].id) {
@@ -79,3 +81,11 @@ export default function Contenedor({setPuntaje}) {
 		</section>
 	);
 }
+
+function mapStateToProps(state){
+	return{
+		tarjetas: state.tarjetas
+	}
+}
+
+export default connect(mapStateToProps,null)(Contenedor);
