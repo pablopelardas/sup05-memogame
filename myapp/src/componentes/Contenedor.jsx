@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import TarjetasMock from '../store/tarjetasMock';
 import s from './Styles/Contenedor.module.css';
 import shuffle from 'lodash.shuffle';
 import FlipCard from './FlipCard.jsx';
 import { connect } from 'react-redux';
+import {getTarjetasSup, getTarjetasVideogames} from '../redux/actions'
 
-export function Contenedor({tarjetas , setPuntaje}) {
+export function Contenedor(props) {
 
+	const tarjetas = props.tarjetas
+	const setPuntaje = props.setPuntaje
 
 	const [comparando, setComparando] = useState([]);
 	const [baraja, setBaraja] = useState();
+
+
+	//localhost:3001/videogames
+	//localhost:3001/sup
   
 	let comparativa = async function () {
 		if (comparando.length !== 2) return null;
@@ -40,8 +46,12 @@ export function Contenedor({tarjetas , setPuntaje}) {
 	};
 
 	useEffect(() => {
-		mezcla();
+		props.getTarjetasVideogames();
 	}, []);
+
+	useEffect(() => {
+		mezcla()
+	},[tarjetas])
 
 	useEffect(() => {
 		comparativa();
@@ -63,6 +73,8 @@ export function Contenedor({tarjetas , setPuntaje}) {
 	return (
 		<section>
 			<button onClick={handleReset}>reset</button>
+			<button onClick={props.getTarjetasSup}>Tarjetas Sup</button>
+			<button onClick={props.getTarjetasVideogames}>Tarjeta VideoGame</button>
 			<div className={s.Contenedor}>
 				{baraja?.map((t, i) => {
 					return (
@@ -88,4 +100,12 @@ function mapStateToProps(state){
 	}
 }
 
-export default connect(mapStateToProps,null)(Contenedor);
+
+function mapDispatchToProp(dispatch){
+	return{
+		getTarjetasSup: () => dispatch(getTarjetasSup()),
+		getTarjetasVideogames: () => dispatch(getTarjetasVideogames())
+	}	
+}
+
+export default connect(mapStateToProps, mapDispatchToProp)(Contenedor);
